@@ -7,7 +7,7 @@ package ec.edu.espe.TouristicPlace.model;
 
 /**
  *
- * @author Leonela_Comina
+ * @author BIOSTAR
  */
 public class TouristicPlace {
 
@@ -80,19 +80,40 @@ public class TouristicPlace {
     public void setDistance(float distance) {
         this.distance = distance;
     }
-    
-    private String name;
-    private String type;
-    private float latitude;
-    private float longitude;
-    private float distance;
 
-    public TouristicPlace(String name, String type, float latitude, float longitude, float distance) {
-        this.name = name;
-        this.type = type;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.distance = distance;
+    /**
+     * @return the LatitudeStar
+     */
+    public float getLatitudeStar() {
+        return LatitudeStar;
+    }
+
+    /**
+     * @param LatitudeStar the LatitudeStar to set
+     */
+    public void setLatitudeStar(float LatitudeStar) {
+        this.LatitudeStar = LatitudeStar;
+    }
+
+    /**
+     * @return the LongitudeStar
+     */
+    public float getLongitudeStar() {
+        return LongitudeStar;
+    }
+
+    /**
+     * @param LongitudeStar the LongitudeStar to set
+     */
+    public void setLongitudeStar(float LongitudeStar) {
+        this.LongitudeStar = LongitudeStar;
     }
     
+    private String name;
+        private String type;
+        private float latitude;
+        private float longitude;
+        private float distance;
+        private float LatitudeStar;
+        private float LongitudeStar;
 }

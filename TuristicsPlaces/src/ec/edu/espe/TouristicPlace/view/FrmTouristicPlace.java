@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.TouristicPlace.view;
 
+import ec.edu.espe.TouristicPlace.model.TouristicPlace;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduardo Cambi
@@ -38,7 +41,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbType = new javax.swing.JComboBox<>();
         txtLatitude = new javax.swing.JTextField();
         txtLongitude = new javax.swing.JTextField();
         txtLatitudeStart = new javax.swing.JTextField();
@@ -84,8 +87,8 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Distance:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parks", "Churches", "Places", "ViewPoint", "Malls" }));
+        cmbType.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parks", "Churches", "Places", "ViewPoint", "Malls" }));
 
         btnSavePLace.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
         btnSavePLace.setForeground(new java.awt.Color(0, 51, 51));
@@ -140,7 +143,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                                                     .addComponent(txtLatitudeStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtLongitude, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtLatitude, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cmbType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnSavePLace)
@@ -176,7 +179,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
@@ -218,7 +221,25 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSavePLaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePLaceActionPerformed
-        // TODO add your handling code here:
+        TouristicPlace touristicplace;
+        String name;
+        String type;
+        float latitude;
+        float longitude;
+        float distance;
+        float LatitudeStar;
+        float LongitudeStar;
+        
+        
+        name = txtName.getText();
+        type = cmbType.getSelectedItem().toString();
+        latitude = Float.parseFloat(txtLatitude.getText());
+        longitude = Float.parseFloat(txtLongitude.getText());
+        distance = Float.parseFloat(txtDistance.getText());
+        LatitudeStar = Float.parseFloat(txtLatitudeStart.getText());
+        LongitudeStar = Float.parseFloat(txtLongitudeStart.getText());
+
+        
     }//GEN-LAST:event_btnSavePLaceActionPerformed
 
     private void btnComputerDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputerDistanceActionPerformed
@@ -267,7 +288,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
     private javax.swing.JButton btnComputerDistance;
     private javax.swing.JButton btnFindPlace;
     private javax.swing.JButton btnSavePLace;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

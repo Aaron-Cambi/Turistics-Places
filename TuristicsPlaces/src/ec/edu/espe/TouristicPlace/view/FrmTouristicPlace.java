@@ -6,6 +6,7 @@
 package ec.edu.espe.TouristicPlace.view;
 
 import ec.edu.espe.TouristicPlace.model.TouristicPlace;
+import ec.edu.espe.controller.Controller;
 import javax.swing.JOptionPane;
 
 /**
@@ -102,6 +103,11 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         btnFindPlace.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
         btnFindPlace.setForeground(new java.awt.Color(0, 51, 51));
         btnFindPlace.setText("Find Place");
+        btnFindPlace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindPlaceActionPerformed(evt);
+            }
+        });
 
         btnComputerDistance.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
         btnComputerDistance.setForeground(new java.awt.Color(0, 51, 51));
@@ -230,6 +236,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         float LatitudeStar;
         float LongitudeStar;
         
+        Controller placecontroller = new Controller();
         
         name = txtName.getText();
         type = cmbType.getSelectedItem().toString();
@@ -239,12 +246,22 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         LatitudeStar = Float.parseFloat(txtLatitudeStart.getText());
         LongitudeStar = Float.parseFloat(txtLongitudeStart.getText());
 
+        touristicplace = new TouristicPlace(name, type, longitude, latitude, distance, LongitudeStar, LatitudeStar);
+        placecontroller.save(touristicplace);
+        
+        JOptionPane.showMessageDialog(rootPane, touristicplace.getName());
+       
+        btnSavePLaceActionPerformed(evt);
         
     }//GEN-LAST:event_btnSavePLaceActionPerformed
 
     private void btnComputerDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputerDistanceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnComputerDistanceActionPerformed
+
+    private void btnFindPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPlaceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFindPlaceActionPerformed
 
     /**
      * @param args the command line arguments

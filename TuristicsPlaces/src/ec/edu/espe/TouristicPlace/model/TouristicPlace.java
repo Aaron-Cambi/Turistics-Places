@@ -11,18 +11,35 @@ package ec.edu.espe.TouristicPlace.model;
  */
 public class TouristicPlace {
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
+    private String Name;
+    private String type;
+    private float latitude;
+    private float longitude;
+    private float distance;
+    private float LatitudeStart;
+    private float LongitudeStart;
+
+    public TouristicPlace(String name, String type, float longitude, float latitude, float distance, float LongitudeStart, float LatitudeStart) {
+        this.LatitudeStart = LatitudeStart;
+        this.LongitudeStart = LongitudeStart;
+        this.distance = distance;
+        this.latitude = latitude;
+        this.type = type;
+        this.Name = name;
     }
 
     /**
-     * @param name the name to set
+     * @return the Name
      */
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return Name;
+    }
+
+    /**
+     * @param Name the Name to set
+     */
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     /**
@@ -82,38 +99,31 @@ public class TouristicPlace {
     }
 
     /**
-     * @return the LatitudeStar
+     * @return the LatitudeStart
      */
-    public float getLatitudeStar() {
-        return LatitudeStar;
+    public float getLatitudeStart() {
+        return LatitudeStart;
     }
 
     /**
-     * @param LatitudeStar the LatitudeStar to set
+     * @param LatitudeStart the LatitudeStar to set
      */
-    public void setLatitudeStar(float LatitudeStar) {
-        this.LatitudeStar = LatitudeStar;
+    public void setLatitudeStart(float LatitudeStar) {
+        this.LatitudeStart = LatitudeStar;
     }
 
     /**
      * @return the LongitudeStar
      */
-    public float getLongitudeStar() {
-        return LongitudeStar;
+    public float getLongitudeStart() {
+        return LongitudeStart;
     }
 
     /**
-     * @param LongitudeStar the LongitudeStar to set
+     * @param LongitudeStart the LongitudeStar to set
      */
     public void setLongitudeStar(float LongitudeStar) {
-        this.LongitudeStar = LongitudeStar;
+        this.LongitudeStart = LongitudeStar;
     }
-    
-    private String name;
-        private String type;
-        private float latitude;
-        private float longitude;
-        private float distance;
-        private float LatitudeStar;
-        private float LongitudeStar;
+
 }

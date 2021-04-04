@@ -5,17 +5,23 @@
  */
 package utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author qwe
+ * @author Edison Lascano Hypertech ESPE-DCCO
  */
 public class FileManager {
+
     public static boolean createFile(String fileName) {
         boolean created = false;
         try {
@@ -44,7 +50,7 @@ public class FileManager {
 
         try {
             FileWriter myWrite = new FileWriter(fileName + ".csv", true);
-            myWrite.write(System.getProperty("line.separator") + data);
+            myWrite.write(data + System.getProperty("line.separator"));
             myWrite.close();
             System.out.println("a new record of " + fileName + " was saved");
             saved = true;
@@ -56,19 +62,47 @@ public class FileManager {
         return saved;
     }
 
-    public static String read(String fileName) {
-        String text = " ";
+    public static int countLines(String fileName) {
+        BufferedReader br = null;
+        int numberOfLines = 0;
         try {
-            Scanner s = new Scanner(new File(fileName));
-            while (s.hasNextLine()) { 
-                text = text + s.nextLine()+ "\n";
+
+            File file = new File(fileName + ".csv");
+            br = new BufferedReader(new FileReader(file));
+            try {
+                while ((br.readLine()) != null) {
+                    numberOfLines++;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+            return numberOfLines;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        catch(FileNotFoundException e){
-            System.out.println("file not found");
-        }
-        
-        return text;       
+        return numberOfLines;
     }
+
+    public static void readLines(String fileName, String[] results) {
+        int counter = 0;
+        try {
+            File myObj = new File(fileName + ".csv");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                results[counter++] = data;
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
 }

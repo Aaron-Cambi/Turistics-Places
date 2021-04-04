@@ -1,5 +1,6 @@
 package ec.edu.espe.controller;
 
+import ec.edu.espe.TouristicPlace.model.TouristicPlace;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -7,23 +8,26 @@ import utils.FileManager;
 
 public class Controller {
 
-    public void save(TouristicPlace touristicplace) {
-        TouristicPlace[] touristicplace = new TouristicPlace[FileManager.countLines(" touristicplace ")];
+   
+     
+    public void save(TouristicPlace touristicplace){
+        TouristicPlace[]  touristicplaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
         String[] rows = new String[FileManager.countLines("touristicplace")];
-        read(rows, touristicplace);
-        if (find(touristicplace, touristicplace.getName()) != -1) {
-            JOptionPane.showMessageDialog(null, "touristicplace -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
-            return;
+        read(rows, touristicplaces);
+        if (find(touristicplaces, touristicplace.getName())!= -1){
+           JOptionPane.showMessageDialog(null, "touristicplace -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
+            return;        
         } else {
-            String data = touristicplace.getName() + "," + touristicplace.gettype() + "," + touristicplace.getlongitude() + "," + touristicplace.getlatitude()  + "," + touristicplace.getdistance()
+            String data = touristicplace.getName()+ "," + touristicplace.getType()+ "," + touristicplace.getLongitude()+ "," + touristicplace.getLatitude()+ "," + touristicplace.getDistance()
                     + "," + touristicplace.getLongitudeStart() + "," + touristicplace.getLatitudeStart();
             FileManager.save(data, "touristicplace");
         }
     }
+ 
 
     public void read(String[] data, TouristicPlace[] touristicplace) {
 
-        FileManager.read("turisticplace", data);
+        FileManager.readLines("turisticplace", data);
 
         //accessing every line of the file through the FileManager.readLines() method
         for (int i = 0; i < data.length; i++) {
@@ -63,10 +67,10 @@ public class Controller {
         Object rowData[] = new Object[touristicplace.length];
         for (int i = 0; i < touristicplace.length; i++) {
             rowData[0] = touristicplace[i].getName();
-            rowData[1] = touristicplace[i].gettype();
-            rowData[2] = touristicplace[i].getlatitude();
-            rowData[3] = touristicplace[i].getlongitude();
-            rowData[4] = touristicplace[i].getdistance();
+            rowData[1] = touristicplace[i].getType();
+            rowData[2] = touristicplace[i].getLatitude();
+            rowData[3] = touristicplace[i].getLongitude();
+            rowData[4] = touristicplace[i].getDistance();
             rowData[5] = touristicplace[i].getLatitudeStart();
             rowData[6] = touristicplace[i].getLongitudeStart();
             model.addRow(rowData);

@@ -302,6 +302,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Find Place"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindPlaceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnComputerDistance">
       <Properties>

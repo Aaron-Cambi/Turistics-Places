@@ -18,14 +18,14 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Edison Lascano Hypertech ESPE-DCCO
+ * @author Leonela_Comina
  */
 public class FileManager {
 
     public static boolean createFile(String fileName) {
         boolean created = false;
         try {
-            File file = new File(fileName + ".txt");
+            File file = new File(fileName + ".csv");
             if (file.createNewFile()) {
                 System.out.println("file was created");
 
@@ -93,12 +93,12 @@ public class FileManager {
         int counter = 0;
         try {
             File myObj = new File(fileName + ".csv");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                results[counter++] = data;
+            try (Scanner myReader = new Scanner(myObj)) {
+                while (myReader.hasNextLine()) {
+                    String data = myReader.nextLine();
+                    results[counter++] = data;
+                }
             }
-            myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

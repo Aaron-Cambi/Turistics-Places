@@ -184,9 +184,6 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                                             .addComponent(txtLatitude, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cmbType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(btnComputerDistance))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
@@ -196,7 +193,9 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSavePLace)
                                 .addGap(113, 113, 113)
-                                .addComponent(btnFindPlace))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnComputerDistance)
+                                    .addComponent(btnFindPlace)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel4))
@@ -206,15 +205,11 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(txtArePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(txtArePlace))
+                .addGap(173, 173, 173))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnShowPlace)
@@ -273,9 +268,9 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSavePLace)
                     .addComponent(btnFindPlace))
-                .addGap(36, 36, 36)
+                .addGap(31, 31, 31)
                 .addComponent(btnComputerDistance)
-                .addGap(74, 74, 74))
+                .addGap(79, 79, 79))
         );
 
         pack();
@@ -308,31 +303,32 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
 
         
         
-        btnSavePLaceActionPerformed(evt);
+        btnShowPlaceActionPerformed(evt);
 
     }//GEN-LAST:event_btnSavePLaceActionPerformed
 
     private void btnComputerDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputerDistanceActionPerformed
-       float Longitude;
-       float Latitude;
-       float LatitudeStart;
-       float LongitudeStart;
-       String Distance;
+       float longuitude;
+       float latitude;
+       float latitudeStart;
+       float longitudeStart;
+       float distance;
+       
        
         Controller  placeController = new Controller();
         
-        Latitude = Float.parseFloat(txtLatitude.getText());
-        Longitude = Float.parseFloat(txtLongitude.getText());
-        LatitudeStart = Float.parseFloat(txtLatitudeStart.getText());
-        LongitudeStart = Float.parseFloat(txtLongitudeStart.getText());
-        Distance = placeController.distanciaCoord(Latitude, Longitude,LatitudeStart,LongitudeStart);
-      
+        latitude = Float.parseFloat(txtLatitude.getText());
+        longuitude = Float.parseFloat(txtLongitude.getText());
+        latitudeStart = Float.parseFloat(txtLatitudeStart.getText());
+        longitudeStart = Float.parseFloat(txtLongitudeStart.getText());
+        distance = placeController.distanciaCoord(latitude, longuitude,latitudeStart,longitudeStart);
+        txtDistance.setText(String.valueOf(distance));
         
        
     }//GEN-LAST:event_btnComputerDistanceActionPerformed
 
     private void btnFindPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPlaceActionPerformed
-         String[] lines = new String[FileManager.countLines("chickens")];
+         String[] lines = new String[FileManager.countLines("touristicplace")];
         Controller placeController = new Controller();
         TouristicPlace[] touristicplace = new TouristicPlace[FileManager.countLines("touristicplace")];
         placeController.read(lines, touristicplace); 
@@ -362,18 +358,25 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
    int column = 0;
         int row = tblPlace.getSelectedRow();
         String name = tblPlace.getModel().getValueAt(row, column).toString();
+        txtName.setText(name);
         column=1;
         String type = tblPlace.getModel().getValueAt(row, column).toString();
+       cmbType.setSelectedItem(type);
         column=2;
         String latitude = tblPlace.getModel().getValueAt(row, column).toString();
+       txtLatitude.setText(latitude);
         column=3;
         String longitude = tblPlace.getModel().getValueAt(row, column).toString();
+         txtLongitude.setText(longitude);
         column=4;
-        String LatitudeStar = tblPlace.getModel().getValueAt(row, column).toString();
+        String LatitudeStart = tblPlace.getModel().getValueAt(row, column).toString();
+        txtLatitudeStart.setText(LatitudeStart);
         column=5;
         String LongitudeStart = tblPlace.getModel().getValueAt(row, column).toString();
+        txtLongitudeStart.setText(LongitudeStart);
         column=6;
         String Distance = tblPlace.getModel().getValueAt(row, column).toString();
+        txtDistance.setText(Distance);
         
         
     }//GEN-LAST:event_tblPlaceMouseClicked

@@ -11,24 +11,24 @@ public class Controller {
    
      
     public void save(TouristicPlace touristicplace){
-        FileManager.createFile("touristicplace");
-        TouristicPlace[]  touristicplaces = new TouristicPlace[FileManager.countLines("touristicplace")];
-        String[] rows = new String[FileManager.countLines("touristicplace")];
+        FileManager.createFile("Touristic Place");
+        TouristicPlace[]  touristicplaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
+        String[] rows = new String[FileManager.countLines("Touristic Place")];
         read(rows, touristicplaces);
         if (find(touristicplaces, touristicplace.getName())!= -1){
-           JOptionPane.showMessageDialog(null, "touristicplace -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
+           JOptionPane.showMessageDialog(null, "Touristic Place -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
             return;        
         } else {
             String data = touristicplace.getName()+ "," + touristicplace.getType()+ "," + touristicplace.getLongitude()+ "," + touristicplace.getLatitude()+ "," + touristicplace.getDistance()
                     + "," + touristicplace.getLongitudeStart() + "," + touristicplace.getLatitudeStart();
-            FileManager.save(data, "touristicplace");
+            FileManager.save(data, "Touristic Place");
         }
     }
  
 
     public void read(String[] data, TouristicPlace[] touristicplace) {
 
-        FileManager.readLines("turisticplace", data);
+        FileManager.readLines("Touristic Place", data);
 
         //accessing every line of the file through the FileManager.readLines() method
         for (int i = 0; i < data.length; i++) {

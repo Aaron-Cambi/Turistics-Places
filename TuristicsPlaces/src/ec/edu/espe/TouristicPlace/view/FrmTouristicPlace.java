@@ -6,7 +6,7 @@
 package ec.edu.espe.TouristicPlace.view;
 
 import ec.edu.espe.TouristicPlace.model.TouristicPlace;
-import ec.edu.espe.controller.Controller;
+import ec.edu.espe.TouristicPlace.controller.TouristicPlaceController;
 import javax.swing.JOptionPane;
 import utils.FileManager;
 
@@ -21,13 +21,13 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
      */
     public FrmTouristicPlace() {
         initComponents();
-        Controller placeController = new Controller();
+        TouristicPlaceController touristicPlaceController = new TouristicPlaceController();
         String[] lines = new String[FileManager.countLines("Touristic Place")];
-        TouristicPlace [] touristicplace = new TouristicPlace[FileManager.countLines("Touristic Place")];
+        TouristicPlace[] touristicplace = new TouristicPlace[FileManager.countLines("Touristic Place")];
         
-        placeController.read(lines, touristicplace);
+        touristicPlaceController.read(lines, touristicplace);
         
-        placeController.populateTouristicPlaceTable(tblPlace, touristicplace);
+        touristicPlaceController.populateTouristicPlaceTable(tblPlace, touristicplace);
     }
 
     /**
@@ -150,7 +150,7 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Boolean.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -194,11 +194,12 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSavePLace)
-                                .addGap(113, 113, 113)
+                                .addGap(112, 112, 112)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnComputerDistance)
-                                    .addComponent(btnFindPlace)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnSavePLace))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel4))
@@ -208,72 +209,80 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(txtArePlace))
-                .addGap(173, 173, 173))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnShowPlace)
-                .addGap(332, 332, 332))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(btnFindPlace)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtArePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(205, 205, 205)
+                                        .addComponent(btnShowPlace)))
+                                .addGap(173, 173, 173))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtLatitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(25, 25, 25)
-                                .addComponent(txtLongitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(txtLatitudeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtLongitudeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDistance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLatitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(25, 25, 25)
+                        .addComponent(txtLongitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtLatitudeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLongitudeStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDistance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                        .addGap(49, 49, 49)
-                        .addComponent(txtArePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnShowPlace)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSavePLace)
-                    .addComponent(btnFindPlace))
-                .addGap(31, 31, 31)
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(btnComputerDistance)
-                .addGap(79, 79, 79))
+                .addGap(18, 18, 18)
+                .addComponent(btnSavePLace)
+                .addGap(106, 106, 106))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFindPlace)
+                .addGap(18, 18, 18)
+                .addComponent(txtArePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnShowPlace)
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -285,76 +294,80 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         String type;
         float latitude;
         float longitude;
-        float distance;
         float LatitudeStar;
         float LongitudeStar;
-
-        Controller placecontroller = new Controller();
-
+        float distance;
+        
+        TouristicPlaceController touristicPlaceController = new TouristicPlaceController();
+        
         name = txtName.getText();
         type = cmbType.getSelectedItem().toString();
         latitude = Float.parseFloat(txtLatitude.getText());
         longitude = Float.parseFloat(txtLongitude.getText());
-        distance = Float.parseFloat(txtDistance.getText());
         LatitudeStar = Float.parseFloat(txtLatitudeStart.getText());
         LongitudeStar = Float.parseFloat(txtLongitudeStart.getText());
-
-        touristicplace = new TouristicPlace(name, type, longitude, latitude, distance, LongitudeStar, LatitudeStar);
-        placecontroller.save(touristicplace);
-
+        distance = Float.parseFloat(txtDistance.getText());
+        
+        touristicplace = new TouristicPlace(name, type, longitude, latitude, LongitudeStar, LatitudeStar, distance);
+        touristicPlaceController.save(touristicplace);
+        
         JOptionPane.showMessageDialog(rootPane, touristicplace.getName());
-
         
-        
+        emptyFields();
         btnShowPlaceActionPerformed(evt);
 
     }//GEN-LAST:event_btnSavePLaceActionPerformed
 
     private void btnComputerDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputerDistanceActionPerformed
-       float longuitude;
-       float latitude;
-       float latitudeStart;
-       float longitudeStart;
-       float distance;
-       
-       
-        Controller  placeController = new Controller();
+        float longuitude;
+        float latitude;
+        float latitudeStart;
+        float longitudeStart;
+        float distance;
+        
+        TouristicPlaceController placeController = new TouristicPlaceController();
         
         latitude = Float.parseFloat(txtLatitude.getText());
         longuitude = Float.parseFloat(txtLongitude.getText());
         latitudeStart = Float.parseFloat(txtLatitudeStart.getText());
         longitudeStart = Float.parseFloat(txtLongitudeStart.getText());
-        distance = placeController.distanciaCoord(latitude, longuitude,latitudeStart,longitudeStart);
+        distance = placeController.distanciaCoord(latitude, longuitude, latitudeStart, longitudeStart);
         txtDistance.setText(String.valueOf(distance));
         
-       
+
     }//GEN-LAST:event_btnComputerDistanceActionPerformed
 
     private void btnFindPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPlaceActionPerformed
-         String[] lines = new String[FileManager.countLines("touristicplace")];
-        Controller placeController = new Controller();
+        String[] lines = new String[FileManager.countLines("touristicplace")];
+        TouristicPlaceController touristicPlaceController = new TouristicPlaceController();
         TouristicPlace[] touristicplace = new TouristicPlace[FileManager.countLines("touristicplace")];
-        placeController.read(lines, touristicplace); 
-        int index = placeController.find(touristicplace,txtName.getText());
+        touristicPlaceController.read(lines, touristicplace);
+        int index = touristicPlaceController.find(touristicplace, txtName.getText());
         if (index == -1) {
             JOptionPane.showMessageDialog(rootPane, "NOT FOUND", "NOT FOUND", JOptionPane.ERROR_MESSAGE);
         } else {
             tblPlace.setRowSelectionInterval(index, index);
+            cmbType.setSelectedItem(touristicplace[index].getType());
+            txtLatitude.setText(String.valueOf(touristicplace[index].getLatitude()));
+            txtLongitude.setText(String.valueOf(touristicplace[index].getLongitude()));
+            txtLatitudeStart.setText(String.valueOf(touristicplace[index].getLatitudeStart()));
+            txtLongitudeStart.setText(String.valueOf(touristicplace[index].getLongitudeStart()));
+            txtDistance.setText(String.valueOf(touristicplace[index].getDistance()));
         }
 
     }//GEN-LAST:event_btnFindPlaceActionPerformed
 
     private void btnShowPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowPlaceActionPerformed
-     String[] lines = new String[FileManager.countLines("Touristic Place")];
-       Controller placeController = new Controller();
-       TouristicPlace[] touristicPlaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
-
-       placeController.read(lines, touristicPlaces);
-
-       for (TouristicPlace touristicPlace : touristicPlaces) { 
-           txtArePlace.setText(txtArePlace.getText() + "\n" + touristicPlace.getName());
+        String[] lines = new String[FileManager.countLines("Touristic Place")];
+        TouristicPlaceController touristicPlaceController = new TouristicPlaceController();
+        TouristicPlace[] touristicPlaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
+        
+        touristicPlaceController.read(lines, touristicPlaces);
+        
+        for (TouristicPlace touristicPlace : touristicPlaces) {            
+            txtArePlace.setText(txtArePlace.getText() + "\n" + touristicPlace.getName());
         }
-       placeController.populateTouristicPlaceTable(tblPlace, touristicPlaces);        
+        touristicPlaceController.populateTouristicPlaceTable(tblPlace, touristicPlaces);
     }//GEN-LAST:event_btnShowPlaceActionPerformed
 
     private void tblPlaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlaceMouseClicked
@@ -362,22 +375,22 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
         int row = tblPlace.getSelectedRow();
         String name = tblPlace.getModel().getValueAt(row, column).toString();
         txtName.setText(name);
-        column=1;
+        column = 1;
         String type = tblPlace.getModel().getValueAt(row, column).toString();
         cmbType.setSelectedItem(type);
-        column=2;
+        column = 2;
         String latitude = tblPlace.getModel().getValueAt(row, column).toString();
         txtLatitude.setText(latitude);
-        column=3;
+        column = 3;
         String longitude = tblPlace.getModel().getValueAt(row, column).toString();
         txtLongitude.setText(longitude);
-        column=4;
+        column = 4;
         String LatitudeStart = tblPlace.getModel().getValueAt(row, column).toString();
         txtLatitudeStart.setText(LatitudeStart);
-        column=5;
+        column = 5;
         String LongitudeStart = tblPlace.getModel().getValueAt(row, column).toString();
         txtLongitudeStart.setText(LongitudeStart);
-        column=6;
+        column = 6;
         String Distance = tblPlace.getModel().getValueAt(row, column).toString();
         txtDistance.setText(Distance);
 
@@ -419,6 +432,16 @@ public class FrmTouristicPlace extends javax.swing.JFrame {
                 new FrmTouristicPlace().setVisible(true);
             }
         });
+    }
+    
+    private void emptyFields(){
+        txtName.setText("");
+        cmbType.setSelectedItem("parks");
+        txtLatitude.setText("");
+        txtLongitude.setText("");
+        txtLatitudeStart.setText("");
+        txtLongitudeStart.setText("");
+        txtDistance.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

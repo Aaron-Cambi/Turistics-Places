@@ -73,18 +73,13 @@ public class FileManager {
                 while ((br.readLine()) != null) {
                     numberOfLines++;
                 }
+                br.close();
             } catch (IOException ex) {
                 Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
             return numberOfLines;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                br.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
         return numberOfLines;
     }
@@ -93,12 +88,12 @@ public class FileManager {
         int counter = 0;
         try {
             File myObj = new File(fileName + ".csv");
-            try (Scanner myReader = new Scanner(myObj)) {
-                while (myReader.hasNextLine()) {
-                    String data = myReader.nextLine();
-                    results[counter++] = data;
-                }
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                results[counter++] = data;
             }
+            myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

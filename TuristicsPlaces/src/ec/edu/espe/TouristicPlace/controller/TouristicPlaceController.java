@@ -1,4 +1,4 @@
-package ec.edu.espe.controller;
+package ec.edu.espe.TouristicPlace.controller;
 
 import ec.edu.espe.TouristicPlace.model.TouristicPlace;
 import javax.swing.JOptionPane;
@@ -6,25 +6,21 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import utils.FileManager;
 
-public class Controller {
+public class TouristicPlaceController {
 
-   
-     
-    public void save(TouristicPlace touristicplace){
-        FileManager.createFile("Touristic Place");
-        TouristicPlace[]  touristicplaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
+    public void save(TouristicPlace touristicplace) {
+        TouristicPlace[] touristicplaces = new TouristicPlace[FileManager.countLines("Touristic Place")];
         String[] rows = new String[FileManager.countLines("Touristic Place")];
         read(rows, touristicplaces);
-        if (find(touristicplaces, touristicplace.getName())!= -1){
-           JOptionPane.showMessageDialog(null, "Touristic Place -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
-            return;        
+        if (find(touristicplaces, touristicplace.getName()) != -1) {
+            JOptionPane.showMessageDialog(null, "Touristic Place -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
+            return;
         } else {
-            String data = touristicplace.getName()+ "," + touristicplace.getType()+ "," + touristicplace.getLongitude()+ "," + touristicplace.getLatitude()+ "," + touristicplace.getDistance()
+            String data = touristicplace.getName() + "," + touristicplace.getType() + "," + touristicplace.getLongitude() + "," + touristicplace.getLatitude() + "," + touristicplace.getDistance()
                     + "," + touristicplace.getLongitudeStart() + "," + touristicplace.getLatitudeStart();
             FileManager.save(data, "Touristic Place");
         }
     }
- 
 
     public void read(String[] data, TouristicPlace[] touristicplace) {
 
@@ -41,11 +37,11 @@ public class Controller {
             String type = dataForTouristicPlace[1];
             float latitude = Float.parseFloat(dataForTouristicPlace[2]);
             float longitude = Float.parseFloat(dataForTouristicPlace[3]);
-            float distance = Float.parseFloat(dataForTouristicPlace[4]);
-            float LatitudeStart = Float.parseFloat(dataForTouristicPlace[5]);
-            float LongitudeStart = Float.parseFloat(dataForTouristicPlace[6]);
+            float LatitudeStart = Float.parseFloat(dataForTouristicPlace[4]);
+            float LongitudeStart = Float.parseFloat(dataForTouristicPlace[5]);
+            float distance = Float.parseFloat(dataForTouristicPlace[6]);
 
-            touristicplace[i] = new TouristicPlace(name, type, longitude, latitude, distance, LongitudeStart, LatitudeStart);
+            touristicplace[i] = new TouristicPlace(name, type, longitude, latitude, LongitudeStart, LatitudeStart, distance);
         }
     }
 
@@ -91,6 +87,6 @@ public class Controller {
         double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
         double distancia = radioTierra * va2;
 
-        return (float)distancia;
+        return (float) distancia;
     }
 }

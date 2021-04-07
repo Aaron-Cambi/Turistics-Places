@@ -15,17 +15,17 @@ public class TouristicPlace {
     private String type;
     private float latitude;
     private float longitude;
-    private float distance;
     private float LatitudeStart;
     private float LongitudeStart;
+    private float distance;
 
-    public TouristicPlace(String name, String type, float longitude, float latitude, float distance, float LongitudeStart, float LatitudeStart) {
+    public TouristicPlace(String name, String type, float longitude, float latitude, float LongitudeStart, float LatitudeStart, float distance) {
         this.LatitudeStart = LatitudeStart;
         this.LongitudeStart = LongitudeStart;
-        this.distance = distance;
         this.latitude = latitude;
         this.type = type;
         this.Name = name;
+        this.distance = distance;
     }
 
     /**
@@ -85,22 +85,9 @@ public class TouristicPlace {
     }
 
     /**
-     * @return the distance
-     */
-    public float getDistance() {
-        return distance;
-    }
-
-    /**
-     * @param distance the distance to set
-     */
-    public void setDistance(float distance) {
-        this.distance = distance;
-    }
-
-    /**
      * @return the LatitudeStart
      */
+    
     public float getLatitudeStart() {
         return LatitudeStart;
     }
@@ -124,6 +111,20 @@ public class TouristicPlace {
      */
     public void setLongitudeStar(float LongitudeStar) {
         this.LongitudeStart = LongitudeStar;
+    }
+    
+    /**
+     * @return the distance
+     */
+    public float getDistance() {
+        return distance;
+    }
+
+    /**
+     * @param distance the distance to set
+     */
+    public void setDistance(float distance) {
+        this.distance = distance;
     }
 
 }

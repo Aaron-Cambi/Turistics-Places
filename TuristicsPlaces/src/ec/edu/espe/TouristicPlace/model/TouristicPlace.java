@@ -19,14 +19,17 @@ public class TouristicPlace {
     private float LongitudeStart;
     private float distance;
 
-    public TouristicPlace(String name, String type, float longitude, float latitude, float LongitudeStart, float LatitudeStart, float distance) {
+    public TouristicPlace(String Name, String type, float latitude, float longitude, float LatitudeStart, float LongitudeStart, float distance) {
+        this.Name = Name;
+        this.type = type;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.LatitudeStart = LatitudeStart;
         this.LongitudeStart = LongitudeStart;
-        this.latitude = latitude;
-        this.type = type;
-        this.Name = name;
         this.distance = distance;
     }
+
+   
 
     /**
      * @return the Name

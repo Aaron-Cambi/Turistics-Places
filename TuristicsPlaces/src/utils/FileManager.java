@@ -51,6 +51,7 @@ public class FileManager {
         try {
             FileWriter myWrite = new FileWriter(fileName + ".csv", true);
             myWrite.write(data + System.getProperty("line.separator"));
+            String saltos = fileName.replace("\n", "\r\n");
             myWrite.close();
             System.out.println("a new record of " + fileName + " was saved");
             saved = true;

@@ -41,8 +41,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtLongitudeStart" alignment="1" min="-2" pref="116" max="-2" attributes="0"/>
                                   <Component id="txtLatitudeStart" alignment="1" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="txtLongitude" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
                                   <Component id="txtLatitude" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="txtLongitude" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
                                   <Component id="cmbType" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
                                   <Component id="txtName" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
                               </Group>
@@ -127,11 +127,11 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtLatitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLongitude" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="txtLongitude" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLatitude" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -286,9 +286,9 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtLatitude">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtLongitude">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLatitude">
     </Component>
     <Component class="javax.swing.JTextField" name="txtLatitudeStart">
     </Component>

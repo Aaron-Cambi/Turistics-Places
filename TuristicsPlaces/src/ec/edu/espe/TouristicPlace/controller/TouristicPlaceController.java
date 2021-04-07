@@ -16,8 +16,8 @@ public class TouristicPlaceController {
             JOptionPane.showMessageDialog(null, "Touristic Place -> " + touristicplace.getName() + " <- already exists", "USE OTHER NAME", JOptionPane.CANCEL_OPTION);
             return;
         } else {
-            String data = touristicplace.getName() + "," + touristicplace.getType() + "," + touristicplace.getLongitude() + "," + touristicplace.getLatitude() + "," + touristicplace.getDistance()
-                    + "," + touristicplace.getLongitudeStart() + "," + touristicplace.getLatitudeStart();
+            String data = touristicplace.getName() + ";" + touristicplace.getType() + ";" + touristicplace.getLongitude() + ";" + touristicplace.getLatitude() + ";" + touristicplace.getDistance()
+                    + ";" + touristicplace.getLongitudeStart() + ";" + touristicplace.getLatitudeStart();
             FileManager.save(data, "Touristic Place");
         }
     }
